@@ -1,0 +1,10 @@
+node_modules/
+build/
+
+
+# until i break this out of the rails side, ignore these for now
+
+*.html
+favicon.ico
+index.html
+robots.txt
