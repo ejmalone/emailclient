@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      onFetched: (emails) => {
-         dispatch(loadMailbox(emails))
+      loadMailbox: () => {
+         dispatch(loadMailbox())
       }
    }
 }

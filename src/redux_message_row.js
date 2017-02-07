@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import MessageRow from './message_row'
-import { deleteEmail } from './actions'
+import { deleteEmail, selectEmail, unselectEmail } from './actions'
 
 
 const mapStateToProps = (state) => {
@@ -10,9 +10,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
    
    return {
-      onDeleteClick: (id) => {
-         console.log('onDeleteClick', id);
-         dispatch(deleteEmail(id));
+      onCheckEmail: (emailId, isChecked) => {
+         console.log('checking email id', emailId);
+
+         if (isChecked)
+            dispatch(selectEmail(emailId));
+         else
+            dispatch(unselectEmail(emailId));
       }
    }
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import ReduxMailboxOptions from './redux_mailbox_options'
 import ReduxMessageRow from './redux_message_row'
 import store from './store'
 import { loadMailbox } from './actions'
@@ -10,17 +11,7 @@ class Mailbox extends React.Component {
    }
 
    componentDidMount() {
-      this.fetch()
-   }
-
-   fetch() {
-
-      $.ajax({
-         error: (xhr, text, err) => { console.error('error is', text, err); },
-         success: (data) => { this.props.onFetched(data.messages); },
-         url: '/messages.json'
-      });
-
+      this.props.loadMailbox()
    }
 
    render() {
@@ -41,9 +32,11 @@ class Mailbox extends React.Component {
             </div>
         
             <div className="col-sm-10">
+               <ReduxMailboxOptions />
                <table>
                   <thead>
                      <tr>
+                        <th></th>
                         <th>From</th>
                         <th>Subject</th>
                      </tr>
