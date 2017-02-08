@@ -1,6 +1,6 @@
-import MailboxOptions from './mailbox_options'
 import { connect } from 'react-redux'
-import { archiveEmails, deleteEmails  } from './actions'
+import MailboxOptions from '../components/mailbox_options'
+import { archiveEmails, deleteEmails  } from '../actions'
 
 const mapStateToProps = (state) => {
    return {

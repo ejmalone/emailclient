@@ -1,6 +1,6 @@
-import Mailbox from './mailbox'
 import { connect } from 'react-redux'
-import { loadMailbox } from './actions'
+import Mailbox from '../components/mailbox'
+import { loadMailbox } from '../actions'
 
 const mapStateToProps = (state) => {
    return {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import MessageRow from './message_row'
-import { deleteEmail, selectEmail, unselectEmail } from './actions'
+import MessageRow from '../components/message_row'
+import { deleteEmail, selectEmail, unselectEmail } from '../actions'
 
 
 const mapStateToProps = (state) => {

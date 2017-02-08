@@ -1,8 +1,8 @@
 import React from 'react'
-import ReduxMailboxOptions from './redux_mailbox_options'
-import ReduxMessageRow from './redux_message_row'
-import store from './store'
-import { loadMailbox } from './actions'
+import MailboxOptions from '../containers/mailbox_options'
+import MessageRow from '../containers/message_row'
+import store from '../store'
+import { loadMailbox } from '../actions'
 
 class Mailbox extends React.Component {
 
@@ -32,7 +32,7 @@ class Mailbox extends React.Component {
             </div>
         
             <div className="col-sm-10">
-               <ReduxMailboxOptions />
+               <MailboxOptions />
                <table>
                   <thead>
                      <tr>
@@ -44,7 +44,7 @@ class Mailbox extends React.Component {
                   
                   <tbody>
                      {this.props.emails.map((message) => 
-                        <ReduxMessageRow key={message.id.toString()}
+                        <MessageRow key={message.id.toString()}
                                     message={message} />
                      )}
                   </tbody>
