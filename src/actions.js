@@ -28,26 +28,6 @@ export function loadMailbox(emails) {
    }
 }
 
-export function deleteEmail(id) {
-   
-   return (dispatch, getState) => {
-
-      dispatch({ type: DELETE_EMAIL, id });
-      
-      $.ajax({
-         url: '/messages/' + String(id) + '.json',
-         method: 'DELETE',
-      })
-         .done((data, status) => {
-            console.log('response from ajax is', data, status);
-         })
-         .fail((xhr, status, err) => {
-            dispatch(serverError('An error occurred. Please reload the page.'))
-         })
-      
-   }
-}
-
 export function setVisibilityFilter(filter) {
    return { type: SET_VISIBILITY_FILTER, filter }
 }
@@ -64,8 +44,8 @@ export function unselectEmail(emailId) {
    return { type: UNSELECT_EMAIL, emailId }
 }
 
-export function archiveEmails() {
-   
+function processEmails(endpoint) {
+
    return (dispatch, getState) => {
       
       let selectedEmails = getState().selectedEmails;
@@ -74,7 +54,7 @@ export function archiveEmails() {
          return
    
       $.ajax({
-         url: '/messages/archive.json',
+         url: endpoint,
          method: 'PUT',
          data: {"emailIds": selectedEmails}
       })
@@ -86,4 +66,12 @@ export function archiveEmails() {
             dispatch(serverError('An error occurred. Please reload the page.'))
          })
    }
+}
+
+export function archiveEmails() {
+   return processEmails('/messages/archive.json')
+}
+
+export function deleteEmails() {
+   return processEmails('/messages/delete.json')
 }
