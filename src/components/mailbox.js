@@ -1,7 +1,6 @@
 import React from 'react'
-import MailboxOptions from '../containers/mailbox_options'
-import MessageRow from '../containers/message_row'
-import store from '../store'
+import { Link } from 'react-router'
+import Inbox from '../containers/inbox'
 import { loadMailbox } from '../actions'
 
 class Mailbox extends React.Component {
@@ -25,6 +24,9 @@ class Mailbox extends React.Component {
 
             <div className="col-sm-2">
                <ul>
+                  <li>
+                     <Link to="/compose" className="btn">new</Link>
+                  </li>
                   <li>inbox ({this.props.emails.length})</li>
                   <li>sent</li>
                   <li>drafts</li>
@@ -32,23 +34,7 @@ class Mailbox extends React.Component {
             </div>
         
             <div className="col-sm-10">
-               <MailboxOptions />
-               <table>
-                  <thead>
-                     <tr>
-                        <th></th>
-                        <th>From</th>
-                        <th>Subject</th>
-                     </tr>
-                  </thead>
-                  
-                  <tbody>
-                     {this.props.emails.map((message) => 
-                        <MessageRow key={message.id.toString()}
-                                    message={message} />
-                     )}
-                  </tbody>
-               </table>
+               <Inbox emails={this.props.emails} /> 
             </div>
          </div>
       )

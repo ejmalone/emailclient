@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      onArchive: () => { console.log('on archive'); dispatch(archiveEmails()); },
+      onArchive: () => dispatch(archiveEmails()),
       onDelete: () => dispatch(deleteEmails())
    }
 }
