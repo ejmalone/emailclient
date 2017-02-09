@@ -1,6 +1,6 @@
 import { MAILBOX_LOADED, SERVER_ERROR, TOGGLE_EMAIL_SELECTION } from './actions'
 
-export const initialState = {
+const initialState = {
    emails: [],
    serverError: '',
 }

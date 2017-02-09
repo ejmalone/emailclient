@@ -1,18 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { emails, serverError, initialState } from './reducers'
+import { routerReducer } from 'react-router-redux'
+import * as reducers from './reducers'
+
+reducers.routing = routerReducer
 
 let store = createStore(
-   combineReducers({
-      emails,
-      serverError
-   }),
+   combineReducers(reducers),
 
-   initialState,
-
-   applyMiddleware(
-      thunkMiddleware
-   )
+   applyMiddleware(thunkMiddleware)
 );
 
 export default store
