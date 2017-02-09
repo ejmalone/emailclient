@@ -1,9 +1,15 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import emailApp from './reducers'
+import { emails, serverError, initialState } from './reducers'
 
 let store = createStore(
-   emailApp,
+   combineReducers({
+      emails,
+      serverError
+   }),
+
+   initialState,
+
    applyMiddleware(
       thunkMiddleware
    )

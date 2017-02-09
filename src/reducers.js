@@ -1,60 +1,47 @@
-import { VisibilityFilters, SET_VISIBILITY_FILTER, DELETE_EMAIL, MAILBOX_LOADED, SERVER_ERROR, SELECT_EMAIL, UNSELECT_EMAIL } from './actions'
+import { MAILBOX_LOADED, SERVER_ERROR, TOGGLE_EMAIL_SELECTION } from './actions'
 
-const initialState = {
-   visibilityFilter: VisibilityFilters.SHOW_ALL,
+export const initialState = {
    emails: [],
    serverError: '',
-   selectedEmails: []
 }
 
-function emailApp(state = initialState, action) {
-   
+export function emails(state = [], action) {
+
    switch (action.type) {
 
       case MAILBOX_LOADED:
-         return Object.assign({}, state, {
-            emails: action.emails
-         })
-
-      case SET_VISIBILITY_FILTER:
-         return Object.assign({}, state, {
-            visibilityFilter: action.filter
-         })
+         return action.emails
       
-      case DELETE_EMAIL:
-         return Object.assign({}, state, {
-            emails: state.emails.filter((email) => email.id != action.id)
+      case TOGGLE_EMAIL_SELECTION:
+
+         return state.map((email) => {
+            
+            if (email.id == action.emailId) {
+               return Object.assign({}, email, {
+                  selected: email.selected ? false : true
+               })
+
+            }
+
+            return email
          })
 
-      case SERVER_ERROR:
-         return Object.assign({}, state, {
-            serverError: action.serverError 
-         })
-
-      case SELECT_EMAIL:
-
-         var selectedEmails = state.selectedEmails.slice()
-
-         if (selectedEmails.indexOf(action.emailId) == -1)
-            selectedEmails.push(action.emailId)
-
-         return Object.assign({}, state, {
-            selectedEmails: selectedEmails            
-         })
-
-      case UNSELECT_EMAIL:
-
-         var selectedEmails = state.selectedEmails.slice().filter((id) => id != action.emailId)
-
-         return Object.assign({}, state, {
-            selectedEmails: selectedEmails
-         })
-   
       default:
          return state
-   }
 
-   return state
+   }
 }
 
-export default emailApp
+export function serverError(state = '', action) {
+
+   switch (action.type) {
+
+      case SERVER_ERROR:
+         return action.serverError
+
+      default:
+         return state
+
+   }
+
+}

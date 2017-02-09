@@ -1,16 +1,6 @@
-export const LOAD_MAILBOX = 'LOAD_MAILBOX';
 export const MAILBOX_LOADED = 'MAILBOX_LOADED';
-export const DELETE_EMAIL = 'DELETE_EMAIL';
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const SERVER_ERROR = 'SERVER_ERROR'
-export const SELECT_EMAIL  = 'SELECT_EMAIL'
-export const UNSELECT_EMAIL = 'UNSELECT_EMAIL'
-
-export const VisibilityFilters = {
-   SHOW_ALL: 'SHOW_ALL',
-   SHOW_UNREAD: 'SHOW_UNREAD',
-   SHOW_DELETED: 'SHOW_DELETED'
-}
+export const TOGGLE_EMAIL_SELECTION  = 'TOGGLE_EMAIL_SELECTION'
 
 export function loadMailbox(emails) {
    
@@ -36,27 +26,25 @@ export function serverError(serverError) {
    return { type: SERVER_ERROR, serverError }
 }
 
-export function selectEmail(emailId) {
-   return { type: SELECT_EMAIL, emailId }
-}
-
-export function unselectEmail(emailId) {
-   return { type: UNSELECT_EMAIL, emailId }
+export function toggleEmail(emailId) {
+   return { type: TOGGLE_EMAIL_SELECTION, emailId }
 }
 
 function processEmails(endpoint) {
 
    return (dispatch, getState) => {
       
-      let selectedEmails = getState().selectedEmails;
+      let selectedEmailIds = getState().emails
+                                 .filter((email) => email.selected ? email.id : null)
+                                 .map((email) => email.id)
       
-      if (selectedEmails.length == 0)
+      if (selectedEmailIds.length == 0)
          return
    
       $.ajax({
          url: endpoint,
          method: 'PUT',
-         data: {"emailIds": selectedEmails}
+         data: {"emailIds": selectedEmailIds}
       })
          .done((data, status) => {
             dispatch(loadMailbox())
