@@ -1,13 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Inbox from '../containers/inbox'
-import { loadMailbox } from '../actions'
 
 class Mailbox extends React.Component {
-
-   constructor(props) {
-      super(props)
-   }
 
    componentDidMount() {
       this.props.loadMailbox()
@@ -25,16 +19,18 @@ class Mailbox extends React.Component {
             <div className="col-sm-2">
                <ul>
                   <li>
-                     <Link to="/compose" className="btn">new</Link>
+                     {
+                        <Link to="/compose" className="btn">new</Link>
+                     }
                   </li>
-                  <li>inbox ({this.props.emails.length})</li>
+                  <li><Link to="/">inbox ({this.props.emails.length})</Link></li>
                   <li>sent</li>
                   <li>drafts</li>
                </ul>
             </div>
         
             <div className="col-sm-10">
-               <Inbox emails={this.props.emails} /> 
+               {this.props.children}
             </div>
          </div>
       )

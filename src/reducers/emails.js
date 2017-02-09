@@ -1,11 +1,8 @@
-import { MAILBOX_LOADED, SERVER_ERROR, TOGGLE_EMAIL_SELECTION } from './actions'
+import { MAILBOX_LOADED, TOGGLE_EMAIL_SELECTION } from '../actions'
 
-const initialState = {
-   emails: [],
-   serverError: '',
-}
+const initialState = []
 
-export function emails(state = [], action) {
+export default function emails(state = initialState, action) {
 
    switch (action.type) {
 
@@ -30,18 +27,4 @@ export function emails(state = [], action) {
          return state
 
    }
-}
-
-export function serverError(state = '', action) {
-
-   switch (action.type) {
-
-      case SERVER_ERROR:
-         return action.serverError
-
-      default:
-         return state
-
-   }
-
 }

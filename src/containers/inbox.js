@@ -1,8 +1,7 @@
 import { connect } from 'react-redux'
 import Inbox from '../components/inbox'
-import { loadMailbox } from '../actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
    return {
       emails: state.emails
    }
@@ -18,4 +17,4 @@ const ReduxInbox = connect(
    mapDispatchToProps
 )(Inbox)
 
-export default Inbox
+export default ReduxInbox

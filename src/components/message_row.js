@@ -10,7 +10,7 @@ class MessageRow extends React.Component {
 
       return (
          <tr>
-            <td><input type="checkbox" onChange={(e) => this.props.onCheckEmail(this.props.message.id, e.target.checked)} /></td>
+            <td><input type="checkbox" onChange={(e) => this.props.onToggleEmail(this.props.message.id)} /></td>
             <td>{this.props.message.from}</td>
             <td>{this.props.message.subject}</td>
          </tr>

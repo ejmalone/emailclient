@@ -16,4 +16,4 @@ const ReduxCompose = connect(
    mapDispatchToProps
 )(Compose)
 
-export default Compose 
+export default ReduxCompose 
