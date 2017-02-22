@@ -1,5 +1,6 @@
 node_modules/
 build/
+npm-debug.log
 
 
 # until i break this out of the rails side, ignore these for now
