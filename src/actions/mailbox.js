@@ -1,8 +1,7 @@
 export const MAILBOX_LOADED = 'MAILBOX_LOADED';
-export const SERVER_ERROR = 'SERVER_ERROR'
 export const TOGGLE_EMAIL_SELECTION  = 'TOGGLE_EMAIL_SELECTION'
 
-export function loadMailbox(emails) {
+export function loadMailbox() {
    
    return (dispatch, getState) => {
 
@@ -16,14 +15,6 @@ export function loadMailbox(emails) {
          
          });
    }
-}
-
-export function setVisibilityFilter(filter) {
-   return { type: SET_VISIBILITY_FILTER, filter }
-}
-
-export function serverError(serverError) {
-   return { type: SERVER_ERROR, serverError }
 }
 
 export function toggleEmail(emailId) {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import MessageRow from '../components/message_row'
-import { deleteEmail, toggleEmail } from '../actions'
+import { deleteEmail, toggleEmail } from '../actions/mailbox'
 
 
 const mapStateToProps = (state) => {

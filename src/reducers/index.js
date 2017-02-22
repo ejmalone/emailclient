@@ -1,4 +1,5 @@
 import emails from './emails'
-import serverError from './serverError'
+import error from './error'
+import composingEmail from './composingEmail'
 
-export default {emails, serverError}
+export default {emails, error, composingEmail}

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import Mailbox from '../components/mailbox'
-import { loadMailbox } from '../actions'
+import { loadMailbox } from '../actions/mailbox'
 
 const mapStateToProps = (state, ownProps) => {
    return {
       emails: state.emails,
-      serverError: state.serverError
+      errorMessage: state.error.message
    }
 }
 

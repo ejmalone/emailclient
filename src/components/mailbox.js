@@ -12,8 +12,8 @@ class Mailbox extends React.Component {
          <div className="container">
             
             {
-               this.props.serverError &&
-               <div className="col-xs-12 alert alert-danger">{this.props.serverError}</div>
+               this.props.errorMessage &&
+               <div className="col-xs-12 col-sm-offset-2 col-sm-10 alert alert-danger">{this.props.errorMessage}</div>
             }
 
             <div className="col-sm-2">

@@ -1,4 +1,4 @@
-import { MAILBOX_LOADED, TOGGLE_EMAIL_SELECTION } from '../actions'
+import { MAILBOX_LOADED, TOGGLE_EMAIL_SELECTION } from '../actions/mailbox'
 
 const initialState = []
 

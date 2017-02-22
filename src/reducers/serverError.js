@@ -1,4 +1,4 @@
-import { SERVER_ERROR } from '../actions'
+import { SERVER_ERROR } from '../actions/errors'
 
 const initialState = ''
 
