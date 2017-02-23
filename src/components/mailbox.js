@@ -20,7 +20,7 @@ class Mailbox extends React.Component {
                <ul>
                   <li>
                      {
-                        <Link to="/compose" className="btn">new</Link>
+                        <Link to="/compose" className="btn btn-default">new</Link>
                      }
                   </li>
                   <li><Link to="/">inbox ({this.props.emails.length})</Link></li>
