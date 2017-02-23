@@ -1,3 +1,4 @@
+import { SERVER } from '../constants'
 import { serverError } from './errors'
 import { loadMailbox } from './mailbox'
 
@@ -20,7 +21,7 @@ export function submitComposingEmail(email) {
       return new Promise((resolve, reject) => {
 
          $.ajax({
-            url: '/messages.json',
+            url: `${SERVER}/messages.json`,
             method: 'POST',
             data: {
                'message[to]': email.email,

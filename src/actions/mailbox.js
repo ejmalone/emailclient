@@ -1,3 +1,5 @@
+import { SERVER } from '../constants'
+
 export const MAILBOX_LOADED = 'MAILBOX_LOADED';
 export const TOGGLE_EMAIL_SELECTION  = 'TOGGLE_EMAIL_SELECTION'
 
@@ -6,7 +8,7 @@ export function loadMailbox() {
    return (dispatch, getState) => {
 
       $.ajax({
-         url: '/messages.json'
+         url: `${SERVER}/messages.json`
       })
          .done((data, status) => {
             dispatch({ type: MAILBOX_LOADED, emails: data.messages })         
